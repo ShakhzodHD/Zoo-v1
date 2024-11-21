@@ -23,4 +23,8 @@ public class UIControllerInput : MonoBehaviour
         playerInputSystem.SprintInput(virtualSprintState);
     }
 
+    public void VirtualInteractInput(bool virtualInteractSrate)
+    {
+        playerInputSystem.InteractInput(virtualInteractSrate);
+    }
 }

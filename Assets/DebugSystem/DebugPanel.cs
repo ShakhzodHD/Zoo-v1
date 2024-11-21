@@ -11,6 +11,7 @@ public class DebugPanel : MonoBehaviour
 
     [SerializeField] private PlayerController playerController;
     [SerializeField] private WeaponController weaponController;
+    [SerializeField] private PlayerInputSystem playerInputSystem;
 
     [SerializeField] private Text speedText;
     [SerializeField] private Text ammoText;
@@ -32,13 +33,17 @@ public class DebugPanel : MonoBehaviour
         if (YandexGame.EnvironmentData.isMobile)
         {
             IsMobile = true;
+
+            Bootstrap.Instance.GameSettings.ChangeInteractableCross(true);
+
             foreach(Transform t in uselessPanels)
             {
-                t.gameObject.SetActive(true);
+                t.gameObject.SetActive(false);
             }
         }
         else if (YandexGame.EnvironmentData.isDesktop)
         {
+            Bootstrap.Instance.GameSettings.ChangeInteractableCross(false);
             IsMobile = false;
         }
     }
@@ -52,12 +57,13 @@ public class DebugPanel : MonoBehaviour
             if (weaponController.isReloading) statusAmmoText.text = "Reload...";
             else statusAmmoText.text = "Console";
 
-            staminaBar.value = playerController.stamina / 100; // staminaBar - это ваш UI Slider
+            staminaBar.value = playerController.stamina / 100;
         }
     }
     public void Init()
     {
         playerController = FindObjectOfType<PlayerController>();
         weaponController = FindObjectOfType<WeaponController>();
+        playerInputSystem = FindObjectOfType<PlayerInputSystem>();
     }
 }

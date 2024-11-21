@@ -23,7 +23,7 @@ public class ItemInteraction : MonoBehaviour
 
         crossIcon = Bootstrap.Instance.UIManager.crossImage;
         defaultCross = Bootstrap.Instance.GameSettings.defaultCross;
-        interactableCross = Bootstrap.Instance.GameSettings.interactableCross;
+        interactableCross = Bootstrap.Instance.GameSettings.universalInteractableCross;
     }
     private void Update()
     {

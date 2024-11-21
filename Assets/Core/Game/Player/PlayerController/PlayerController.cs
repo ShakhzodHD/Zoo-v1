@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedChangeRate = 10.0f;
 
     [Header("Sprint")]
-    [SerializeField] public float stamina = 100f;               // Текущая выносливость
-    [SerializeField] public const float maxStamina = 100f;      // Максимальная выносливость
-    [SerializeField] private const float staminaDrainRate = 20f; // Скорость расхода выносливости
-    [SerializeField] private const float staminaRegenRate = 10f; // Скорость восстановления выносливости
+    [SerializeField] public float stamina = 100f;
+    [SerializeField] public const float maxStamina = 100f;
+    [SerializeField] private const float staminaDrainRate = 20f;
+    [SerializeField] private const float staminaRegenRate = 10f;
 
     [Space]
     [SerializeField] private float jumpHeight = 1.2f;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
 
-    private bool canSprint => stamina > 10f;    // Условие для возможности спринта
+    private bool canSprint => stamina > 10f;
 
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;

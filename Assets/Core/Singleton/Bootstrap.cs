@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Bootstrap : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Bootstrap : MonoBehaviour
     public event Action<GameStates> OnGameStateChanged;
     public GameSettings GameSettings { get; private set; }
     public Camera Camera { get; private set; }
+    public PlayerInput PlayerInput { get; set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -20,9 +22,11 @@ public class Bootstrap : MonoBehaviour
 
         Instance = this;
         Init();
-        UIManager.Init();
 
         GameSettings = Resources.Load<GameSettings>(Constants.GAME_SETTINGS_RESOURCES_PATH);
+        PlayerInput = GameSettings.PlayerPrefab.GetComponent<PlayerInput>();
+
+        UIManager.Init();
 
         DontDestroyOnLoad(gameObject);
         ScenesService.OnLevelLoaded += OnLevelLoaded;

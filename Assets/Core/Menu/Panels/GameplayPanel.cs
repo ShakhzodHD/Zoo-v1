@@ -15,7 +15,6 @@ public class GameplayPanel : MonoBehaviour
     }
     private void OnButtonPauseClick()
     {
-        //Bootstrap.Instance.TimeScaleController.PauseGame();
         Bootstrap.Instance.UIManager.ChangeMenuState(MenuStates.Pause);
     }
 }

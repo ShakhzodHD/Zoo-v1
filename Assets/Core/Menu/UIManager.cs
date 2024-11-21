@@ -11,12 +11,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private List<GameObject> panels;
 
-
     private MenuStates _menuStates = MenuStates.StartMenu;
 
     public void Init()
     {
         Bootstrap.Instance.OnGameStateChanged += OnGameStateChanged;
+
+        panels[3].GetComponent<PausePanel>().Init();
     }
     private void OnGameStateChanged(GameStates gameStates)
     {

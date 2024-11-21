@@ -567,9 +567,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7387944278485186583}
     m_Modifications:
-    - target: {fileID: 1122789029089626665, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
-      propertyPath: m_Text
-      value: "Debug log \nAlpha 2.0"
+    - target: {fileID: 992212030814469044, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 796799512353798354}
+    - target: {fileID: 992212030814469044, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
+      propertyPath: weaponController
+      value: 
+      objectReference: {fileID: 1790275125983629467}
+    - target: {fileID: 1296295380907184390, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
+      propertyPath: magnitudeMultiplier
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2059573917698104379, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
       propertyPath: m_Pivot.x
@@ -660,10 +668,12 @@ PrefabInstance:
       value: MobileUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3664481079775212459, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8328262754674015054, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 6944691911590096483}
   m_SourcePrefab: {fileID: 100100000, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
 --- !u!224 &130400820852146109 stripped
 RectTransform:
@@ -675,3 +685,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8328262754674015054, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
   m_PrefabInstance: {fileID: 2115096759444284294}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6944691911590096483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983118051643250888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24d96ae7f274b7489539d0ff25a59f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSystem: {fileID: 157760735653683918}
+  rayLength: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
