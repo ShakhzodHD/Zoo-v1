@@ -30,7 +30,6 @@ public class MobileShooting : MonoBehaviour
             {
                 inputSystem.ShootInput(false);
             }
-            Debug.Log($"Попали в: {hitInfo.collider.name}, расстояние: {hitInfo.distance}");
         }
     }
 }

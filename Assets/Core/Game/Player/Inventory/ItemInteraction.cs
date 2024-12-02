@@ -6,6 +6,9 @@ public class ItemInteraction : MonoBehaviour
     [SerializeField] private PlayerInputSystem input;
     [SerializeField] private InventoryManager inventoryManager;
 
+    [SerializeField] private HandHolderController handHolderController;
+    [SerializeField] private Transform handContainerl;
+
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float rayLength = 2f;
@@ -19,7 +22,7 @@ public class ItemInteraction : MonoBehaviour
         input = GetComponent<PlayerInputSystem>();
 
         mainCamera = Bootstrap.Instance.Camera;
-        inventoryManager = FindObjectOfType<InventoryManager>();
+        inventoryManager = Bootstrap.Instance.InventoryManager;
 
         crossIcon = Bootstrap.Instance.UIManager.crossImage;
         defaultCross = Bootstrap.Instance.GameSettings.defaultCross;
@@ -75,7 +78,6 @@ public class ItemInteraction : MonoBehaviour
                     Debug.Log("No space into inventory");
                 }
             }
-            Debug.Log($"Попали в: {hitInfo.collider.name}, расстояние: {hitInfo.distance}");
         }
     }
 }

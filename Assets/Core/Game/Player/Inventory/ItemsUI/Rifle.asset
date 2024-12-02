@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70d161041b0e9d14ea9db2553bf9f26d, type: 3}
-  m_Name: NewItem
+  m_Name: Rifle
   m_EditorClassIdentifier: 
-  itemName: ASD
-  icon: {fileID: 21300000, guid: cdb950438ef0ead45a287822e66f5fa6, type: 3}
-  model: {fileID: 2265225867127515163, guid: efaf769df23be21479085645c96c09d2, type: 3}
+  itemName: Rifle
+  icon: {fileID: 21300000, guid: 5dd65201da50ace4ca0f4a8076d95325, type: 3}
+  model: {fileID: 8317514002797410267, guid: a73014360f5c7694c801e3e795ff1c48, type: 3}

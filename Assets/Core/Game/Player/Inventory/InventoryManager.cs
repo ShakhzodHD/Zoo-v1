@@ -7,13 +7,23 @@ public class InventoryManager : MonoBehaviour
     public Image[] inventorySlots;
     public List<ItemUI> items = new();
 
-    void Start()
+    public int activeSlotIndex = 0;
+
+    private HandHolderController handHolderController;
+
+    private void Start()
     {
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             inventorySlots[i].sprite = null;
             items.Add(null);
         }
+
+        UpdateActiveSlotIndicator();
+    }
+    public void Initialize()
+    {
+        handHolderController = FindObjectOfType<HandHolderController>();
     }
 
     public int CanAddToInventory()
@@ -33,6 +43,8 @@ public class InventoryManager : MonoBehaviour
         {
             items[slotIndex] = item;
             inventorySlots[slotIndex].sprite = item.icon;
+            handHolderController.handSlots[slotIndex].SetObject(item);
+            handHolderController.SwitchHand(slotIndex);
         }
         else
         {
@@ -47,5 +59,33 @@ public class InventoryManager : MonoBehaviour
             items[slotIndex] = null;
             inventorySlots[slotIndex].sprite = null;
         }
+    }
+    public void SetActiveSlot(int newIndex)
+    {
+        if (newIndex >= 0 && newIndex < items.Count)
+        {
+            activeSlotIndex = newIndex;
+            UpdateActiveSlotIndicator();
+        }
+    }
+    public void SwitchActiveSlot(int direction)
+    {
+        activeSlotIndex = (activeSlotIndex + direction + items.Count) % items.Count;
+        handHolderController.SwitchHand(activeSlotIndex);
+        UpdateActiveSlotIndicator();
+    }
+    private void UpdateActiveSlotIndicator()
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            inventorySlots[i].transform.localScale = (i == activeSlotIndex) ? Vector3.one * 1.2f : Vector3.one;
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            SwitchActiveSlot(-1);
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            SwitchActiveSlot(1);
     }
 }

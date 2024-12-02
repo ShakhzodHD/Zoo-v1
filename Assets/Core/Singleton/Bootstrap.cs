@@ -10,8 +10,9 @@ public class Bootstrap : MonoBehaviour
     public GameStates GameState { get; private set; } = GameStates.InMenu;
     public event Action<GameStates> OnGameStateChanged;
     public GameSettings GameSettings { get; private set; }
-    public Camera Camera { get; private set; }
+    public Camera Camera { get; set; }
     public PlayerInput PlayerInput { get; set; }
+    public InventoryManager InventoryManager { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,7 +36,7 @@ public class Bootstrap : MonoBehaviour
     {
         ScenesService = FindObjectOfType<ScenesService>();
         UIManager = FindObjectOfType<UIManager>();
-        Camera = FindObjectOfType<Camera>();
+        InventoryManager = FindObjectOfType<InventoryManager>();
     }
     private void OnLevelLoaded()
     {

@@ -12,6 +12,8 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag != "Hit") return;
+
         TargetHealth targetHealth = collision.gameObject.GetComponent<TargetHealth>();
 
         if (targetHealth != null)
