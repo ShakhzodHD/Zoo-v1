@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("Сообщение");
         Bootstrap.Instance.InventoryManager.Initialize();
 
         if (DebugPanel.Instance.IsMobile)

@@ -21,6 +21,7 @@ public class WeaponController : MonoBehaviour
 
     private float nextFireTime = 0f;
     [HideInInspector] public bool isReloading = false;
+    private bool isEquipWeapon = false;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
+        if (!isEquipWeapon) return;
+
         UpdateAiming();
 
         if (input.shoot)
@@ -100,5 +103,14 @@ public class WeaponController : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = magazineSize;
         isReloading = false;
+    }
+    public void SetWeapon(Weapon weapon)
+    {
+        firePoint = weapon.GetFirePoint();
+        isEquipWeapon = true;
+    }
+    public void RemoveWeapon()
+    {
+        isEquipWeapon = false;
     }
 }

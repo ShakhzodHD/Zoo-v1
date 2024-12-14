@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class HandHolderSlot : MonoBehaviour
 {
+    [SerializeField] private WeaponController controller;
     private GameObject objModel;
-    private Transform currentObj;
     public void SetActiveSlot()
     {
-        if (transform.childCount > 0) transform.GetChild(0).gameObject.SetActive(true);
+        if (transform.childCount > 0)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            if (transform.GetChild(0).TryGetComponent<Weapon>(out var weapon))
+            {
+                controller.SetWeapon(weapon);
+            }
+            else
+            {
+                controller.RemoveWeapon();
+            }
+        }
     }
     public void InactiveSlot()
     {

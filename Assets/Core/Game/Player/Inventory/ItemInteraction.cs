@@ -49,6 +49,11 @@ public class ItemInteraction : MonoBehaviour
                 crossIcon.sprite = interactableCross;
                 return;
             }
+            if (hitInfo.collider.CompareTag("Socket"))
+            {
+                crossIcon.sprite = interactableCross;
+                return;
+            }
         }
 
         crossIcon.sprite = defaultCross;
@@ -77,6 +82,10 @@ public class ItemInteraction : MonoBehaviour
                 {
                     Debug.Log("No space into inventory");
                 }
+            }
+            if (hitInfo.collider.CompareTag("Socket"))
+            {
+                Debug.Log("Socket");
             }
         }
     }
