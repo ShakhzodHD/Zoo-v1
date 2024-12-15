@@ -45,6 +45,8 @@ public class InventoryManager : MonoBehaviour
             inventorySlots[slotIndex].sprite = item.icon;
             handHolderController.handSlots[slotIndex].SetObject(item);
             handHolderController.SwitchHand(slotIndex);
+            activeSlotIndex = slotIndex;
+            UpdateActiveSlotIndicator();
         }
         else
         {
@@ -80,6 +82,10 @@ public class InventoryManager : MonoBehaviour
         {
             inventorySlots[i].transform.localScale = (i == activeSlotIndex) ? Vector3.one * 1.2f : Vector3.one;
         }
+    }
+    public ItemUI GetActiveItemUI()
+    {
+        return items[activeSlotIndex];
     }
     private void Update()
     {

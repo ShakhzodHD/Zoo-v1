@@ -28,6 +28,13 @@ public class HandHolderSlot : MonoBehaviour
         objModel = item.model;
         SpawnItemInHand();
     }
+    public void RemoveObject()
+    {
+        if (transform.childCount > 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+        }
+    }
     private void SpawnItemInHand()
     {
         if (objModel != null)

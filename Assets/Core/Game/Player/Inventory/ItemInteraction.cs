@@ -54,6 +54,11 @@ public class ItemInteraction : MonoBehaviour
                 crossIcon.sprite = interactableCross;
                 return;
             }
+            if (hitInfo.collider.CompareTag("Rod"))
+            {
+                crossIcon.sprite = interactableCross;
+                return;
+            }
         }
 
         crossIcon.sprite = defaultCross;
@@ -85,7 +90,41 @@ public class ItemInteraction : MonoBehaviour
             }
             if (hitInfo.collider.CompareTag("Socket"))
             {
-                Debug.Log("Socket");
+                if (hitInfo.collider.TryGetComponent<Socket>(out var socket))
+                {
+                    if (!socket.GetState())
+                    {
+                        inventoryManager.GetActiveItemUI();
+                        if (socket.TrySetItem(inventoryManager.GetActiveItemUI()))
+                        {
+                            var activeIndex = inventoryManager.activeSlotIndex;
+                            inventoryManager.RemoveFromInventory(activeIndex);
+                            handHolderController.handSlots[activeIndex].RemoveObject();
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Socket occuped");
+                    }
+                }
+            }
+            if (hitInfo.collider.CompareTag("Rod"))
+            {
+                if (hitInfo.collider.TryGetComponent<Rod>(out var rod))
+                {
+                    if (rod.IsReady)
+                    {
+                        rod.TryIt();
+                    }
+                    else
+                    {
+                        Debug.Log("Rod: Conditions not met");
+                    }
+                }
             }
         }
     }

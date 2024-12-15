@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Item
   - Socket
+  - Rod
   layers:
   - Default
   - TransparentFX
