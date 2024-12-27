@@ -44,17 +44,8 @@ public class ItemInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, rayLength, interactableLayer))
         {
-            if (hitInfo.collider.CompareTag("Item"))
-            {
-                crossIcon.sprite = interactableCross;
-                return;
-            }
-            if (hitInfo.collider.CompareTag("Socket"))
-            {
-                crossIcon.sprite = interactableCross;
-                return;
-            }
-            if (hitInfo.collider.CompareTag("Rod"))
+            string[] interactableTags = { "Item", "Socket", "Rod", "Lock" };
+            if (System.Array.Exists(interactableTags, tag => hitInfo.collider.CompareTag(tag)))
             {
                 crossIcon.sprite = interactableCross;
                 return;
@@ -62,6 +53,8 @@ public class ItemInteraction : MonoBehaviour
         }
 
         crossIcon.sprite = defaultCross;
+        Bootstrap.Instance.InscriptionInteraction.Clear();
+
     }
     private void OnInteraction()
     {
@@ -118,11 +111,34 @@ public class ItemInteraction : MonoBehaviour
                 {
                     if (rod.IsReady)
                     {
-                        rod.TryIt();
+                        rod.Open();
                     }
                     else
                     {
                         Debug.Log("Rod: Conditions not met");
+                    }
+                }
+            }
+            if (hitInfo.collider.CompareTag("Lock"))
+            {
+                if (hitInfo.collider.TryGetComponent<Lock>(out var socket))
+                {
+                    var activeItem = inventoryManager.GetActiveItemUI();
+                    if (activeItem != null)
+                    {
+                        if (activeItem.type == socket.requireMechanismId)
+                        {
+                            socket.Breack();
+                            Bootstrap.Instance.InscriptionInteraction.Clear();
+                        }
+                        else
+                        {
+                            Bootstrap.Instance.InscriptionInteraction.Show(InscriptionType.Crowbar);
+                        }
+                    }
+                    else
+                    {
+                        Bootstrap.Instance.InscriptionInteraction.Show(InscriptionType.Crowbar);
                     }
                 }
             }

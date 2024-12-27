@@ -13,6 +13,7 @@ public class Bootstrap : MonoBehaviour
     public Camera Camera { get; set; }
     public PlayerInput PlayerInput { get; set; }
     public InventoryManager InventoryManager { get; private set; }
+    public InscriptionInteraction InscriptionInteraction { get; set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -37,6 +38,7 @@ public class Bootstrap : MonoBehaviour
         ScenesService = FindObjectOfType<ScenesService>();
         UIManager = FindObjectOfType<UIManager>();
         InventoryManager = FindObjectOfType<InventoryManager>();
+        InscriptionInteraction = FindObjectOfType<InscriptionInteraction>();
     }
     private void OnLevelLoaded()
     {

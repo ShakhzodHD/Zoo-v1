@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> panels;
 
     private MenuStates _menuStates = MenuStates.StartMenu;
-
     public void Init()
     {
         Bootstrap.Instance.OnGameStateChanged += OnGameStateChanged;

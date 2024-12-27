@@ -17,7 +17,7 @@ public class Rod : MonoBehaviour
             }
         }
     }
-    public void TryIt()
+    public void Open()
     {
         if (isReady)
         {
