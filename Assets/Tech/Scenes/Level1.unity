@@ -309,6 +309,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7754602569989248856, guid: 59fa1e9f1f6a2254191766f2164c6f12, type: 3}
+      propertyPath: returnRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754602569989248856, guid: 59fa1e9f1f6a2254191766f2164c6f12, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1471082343}

@@ -27,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float waitCounter;
 
     private bool isAttacking;
+    private bool isAggressive;
 
     private void Start()
     {
@@ -58,6 +59,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void StartPatrolling()
     {
+        if (currentState == EnemyState.Patrolling) return;
+
+        isAggressive = false;
+
         currentState = EnemyState.Patrolling;
 
         if (patrolPoints.Length == 0)
@@ -106,7 +111,7 @@ public class EnemyBehaviour : MonoBehaviour
             currentState = EnemyState.Chasing;
             agent.isStopped = false;
         }
-        else if (distanceToPlayer > returnRadius)
+        else if (isAggressive && distanceToPlayer > returnRadius)
         {
             StartPatrolling();
         }
@@ -114,6 +119,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void ChaseBehavior()
     {
+        isAggressive = true;
         agent.SetDestination(player.position);
     }
 

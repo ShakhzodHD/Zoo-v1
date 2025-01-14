@@ -116,9 +116,10 @@ MonoBehaviour:
   - {fileID: 0}
   waitTime: 2
   detectionRadius: 10
-  attackRadius: 2
+  attackRadius: 3
   attackCooldown: 2.4
   damage: 10
+  returnRadius: 15
 --- !u!114 &2620300362599313290
 MonoBehaviour:
   m_ObjectHideFlags: 0
