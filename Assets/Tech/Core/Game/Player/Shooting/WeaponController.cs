@@ -89,10 +89,12 @@ public class WeaponController : MonoBehaviour
         rb.velocity = firePoint.forward * bulletSpeed;
         Destroy(bullet, 3f);
         currentAmmo--;
+        magazineSize--;
     }
 
     private void Reload()
     {
+        if (currentAmmo <= 0) return;
         if (!isReloading) StartCoroutine(ReloadCoroutine());
     }
 
@@ -112,5 +114,11 @@ public class WeaponController : MonoBehaviour
     public void RemoveWeapon()
     {
         isEquipWeapon = false;
+    }
+
+    public void AddAmmo(int amount)
+    {
+        magazineSize += amount;
+        StartCoroutine(ReloadCoroutine());
     }
 }

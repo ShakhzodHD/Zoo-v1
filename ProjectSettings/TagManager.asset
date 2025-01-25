@@ -9,6 +9,7 @@ TagManager:
   - Socket
   - Rod
   - Lock
+  - Hit
   layers:
   - Default
   - TransparentFX

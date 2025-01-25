@@ -23,5 +23,6 @@ public class MenuPanel : MonoBehaviour
         Bootstrap.Instance.ScenesService.InitialLoad();
         //Bootstrap.Instance.ScenesService.LoadLevel(Constants.FIRST_SCENE_NAME);
         Bootstrap.Instance.ScenesService.LoadLevel("Level1");
+        //Bootstrap.Instance.ScenesService.LoadLevel("TestLevel");
     }
 }

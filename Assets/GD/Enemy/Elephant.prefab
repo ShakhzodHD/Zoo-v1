@@ -85,14 +85,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elephant Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 5285624799412704666, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
-      propertyPath: patrolPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 

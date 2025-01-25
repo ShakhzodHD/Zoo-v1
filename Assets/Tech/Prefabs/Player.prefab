@@ -399,7 +399,7 @@ MonoBehaviour:
   fireRate: 0.3
   playerCamera: {fileID: 4507778600090305962}
   maxShootDistance: 1000
-  magazineSize: 15
+  magazineSize: 0
   currentAmmo: 0
   reloadTime: 1.5
   input: {fileID: 157760735653683918}
@@ -707,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 1790275125983629467}
     - target: {fileID: 1296295380907184390, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
       propertyPath: magnitudeMultiplier
-      value: 60
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2059573917698104379, guid: 4918d466fdf73d84f97dcf98d7b5c97e, type: 3}
       propertyPath: m_Pivot.x
