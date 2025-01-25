@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Destroy(uiMobile);
         }
+
+        Bootstrap.Instance.UIManager.weaponHUD.Initialize(GetComponent<WeaponController>());
+
         DebugPanel.Instance.Init();
     }
 }

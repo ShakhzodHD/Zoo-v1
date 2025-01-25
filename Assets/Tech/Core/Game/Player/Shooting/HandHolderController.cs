@@ -47,7 +47,7 @@ public class HandHolderController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector2 frameInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 frameInput = new(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         frameInput *= sensitivity;
 
         Quaternion rotationYaw = Quaternion.Euler(0.0f, frameInput.x, 0.0f);

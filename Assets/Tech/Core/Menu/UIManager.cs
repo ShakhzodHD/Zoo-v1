@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image crossImage;
+    public WeaponHUD weaponHUD;
 
     [SerializeField] private GameObject canvas;
     [SerializeField] private List<GameObject> panels;

@@ -279,6 +279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 952783516818203625}
+  baseAmmo: 40
+  magazineSize: 20
+  logo: {fileID: 21300000, guid: 0d994572401a6fc42aac6c0db80ebae1, type: 3}
+  currentMagazineAmmo: 0
 --- !u!1 &8369709945988496299
 GameObject:
   m_ObjectHideFlags: 0

@@ -171,7 +171,7 @@ MonoBehaviour:
   containerRect: {fileID: 8262237385802441032}
   handleRect: {fileID: 901869103911247452}
   joystickRange: 120
-  magnitudeMultiplier: 360
+  magnitudeMultiplier: 1
   invertXOutputValue: 0
   invertYOutputValue: 1
   joystickOutputEvent:
@@ -844,6 +844,7 @@ GameObject:
   - component: {fileID: 398501383436236432}
   - component: {fileID: 3317604629247443435}
   - component: {fileID: 889246571734096231}
+  - component: {fileID: 8922568812494444017}
   - component: {fileID: 6122906869701709622}
   m_Layer: 5
   m_Name: MobileUI
@@ -938,6 +939,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8922568812494444017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328262754674015054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24d96ae7f274b7489539d0ff25a59f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSystem: {fileID: 0}
+  rayLength: 20
 --- !u!114 &6122906869701709622
 MonoBehaviour:
   m_ObjectHideFlags: 0

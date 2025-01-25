@@ -4,12 +4,14 @@ public class HandHolderSlot : MonoBehaviour
 {
     [SerializeField] private WeaponController controller;
     private GameObject objModel;
+
     public void SetActiveSlot()
     {
-        if (transform.childCount > 0)
+        if (TryGetChild(out GameObject child))
         {
-            transform.GetChild(0).gameObject.SetActive(true);
-            if (transform.GetChild(0).TryGetComponent<Weapon>(out var weapon))
+            child.SetActive(true);
+
+            if (child.TryGetComponent<Weapon>(out var weapon))
             {
                 controller.SetWeapon(weapon);
             }
@@ -18,31 +20,49 @@ public class HandHolderSlot : MonoBehaviour
                 controller.RemoveWeapon();
             }
         }
+        else
+        {
+            controller.RemoveWeapon();
+        }
     }
+
     public void InactiveSlot()
     {
-        if (transform.childCount > 0) transform.GetChild(0).gameObject.SetActive(false);
+        if (TryGetChild(out GameObject child))
+        {
+            child.SetActive(false);
+        }
     }
+
     public void SetObject(ItemUI item)
     {
+        if (item == null || item.model == null) return;
+
         objModel = item.model;
+        RemoveObject();
         SpawnItemInHand();
     }
+
     public void RemoveObject()
     {
-        if (transform.childCount > 0)
+        if (TryGetChild(out GameObject child))
         {
-            Destroy(transform.GetChild(0).gameObject);
+            Destroy(child);
         }
     }
+
     private void SpawnItemInHand()
     {
-        if (objModel != null)
-        {
-            GameObject obj = Instantiate(objModel, transform);
+        if (objModel == null) return;
 
-            obj.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-            obj.tag = "Untagged";
-        }
+        GameObject obj = Instantiate(objModel, transform);
+        obj.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        obj.tag = "Untagged";
+    }
+
+    private bool TryGetChild(out GameObject child)
+    {
+        child = transform.childCount > 0 ? transform.GetChild(0).gameObject : null;
+        return child != null;
     }
 }

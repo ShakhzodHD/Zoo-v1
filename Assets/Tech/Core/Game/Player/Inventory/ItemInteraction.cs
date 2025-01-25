@@ -93,10 +93,12 @@ public class ItemInteraction : MonoBehaviour
                             var activeIndex = inventoryManager.activeSlotIndex;
                             inventoryManager.RemoveFromInventory(activeIndex);
                             handHolderController.handSlots[activeIndex].RemoveObject();
+
+                            Bootstrap.Instance.InscriptionInteraction.Clear();
                         }
                         else
                         {
-
+                            Bootstrap.Instance.InscriptionInteraction.Show(InscriptionType.Key);
                         }
                     }
                     else
@@ -115,7 +117,7 @@ public class ItemInteraction : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Rod: Conditions not met");
+                        Bootstrap.Instance.InscriptionInteraction.Show("Impossible");
                     }
                 }
             }

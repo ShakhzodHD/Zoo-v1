@@ -7,7 +7,7 @@ public class Socket : MonoBehaviour
     private bool isSocketOccuped;
     public bool TrySetItem(ItemUI item)
     {
-        if (item.type == mechanismType)
+        if (item != null && item.type == mechanismType) 
         {
             isSocketOccuped = true;
             GameObject obj = Instantiate(item.model, transform);

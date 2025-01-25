@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class WeaponController : MonoBehaviour
 {
@@ -14,19 +16,15 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private float maxShootDistance = 1000f;
 
     [Header("Ammo Settings")]
-    [SerializeField] private int magazineSize = 30;
-    [SerializeField] public int currentAmmo;
     [SerializeField] private float reloadTime = 1.5f;
     [SerializeField] private PlayerInputSystem input;
 
     private float nextFireTime = 0f;
-    [HideInInspector] public bool isReloading = false;
     private bool isEquipWeapon = false;
 
-    private void Awake()
-    {
-        currentAmmo = magazineSize;
-    }
+    public Weapon useWeapon;
+
+    public event Action<Sprite> onChangeWeapon;
 
     private void Start()
     {
@@ -51,7 +49,6 @@ public class WeaponController : MonoBehaviour
             input.reload = false;
         }
     }
-
     private void UpdateAiming()
     {
         Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, 0f);
@@ -70,55 +67,60 @@ public class WeaponController : MonoBehaviour
 
     private void OnFirePerfomed()
     {
-        if (isReloading) return;
-        if (currentAmmo > 0 && Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
         }
-        else if (currentAmmo <= 0)
-        {
-            Reload();
-        }
     }
-
     private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.velocity = firePoint.forward * bulletSpeed;
-        Destroy(bullet, 3f);
-        currentAmmo--;
-        magazineSize--;
+        if (useWeapon.CurrentAmmo > 0)
+        {
+            useWeapon.CurrentAmmo--;
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.velocity = firePoint.forward * bulletSpeed;
+            Destroy(bullet, 3f);
+
+            Debug.Log("Выстрел! Осталось патронов: " + useWeapon.CurrentAmmo);
+        }
+        else
+        {
+            Debug.Log("Боеприпасы закончились!");
+        }
     }
 
     private void Reload()
     {
-        if (currentAmmo <= 0) return;
-        if (!isReloading) StartCoroutine(ReloadCoroutine());
-    }
-
-    IEnumerator ReloadCoroutine()
-    {
-        isReloading = true;
-        Debug.Log("Reloading...");
-        yield return new WaitForSeconds(reloadTime);
-        currentAmmo = magazineSize;
-        isReloading = false;
+        useWeapon.Reload();
     }
     public void SetWeapon(Weapon weapon)
     {
+        input.shoot = false;
+        input.reload = false;
+
         firePoint = weapon.GetFirePoint();
+
+        useWeapon = weapon;
+
         isEquipWeapon = true;
+
+        onChangeWeapon?.Invoke(weapon.logo);
+
+        Bootstrap.Instance.UIManager.weaponHUD.SetState(weapon);
     }
     public void RemoveWeapon()
     {
         isEquipWeapon = false;
+
+        Bootstrap.Instance.UIManager.weaponHUD.SetState(null);
     }
 
     public void AddAmmo(int amount)
     {
-        magazineSize += amount;
-        StartCoroutine(ReloadCoroutine());
+        //magazineSize += amount;
+        //StartCoroutine(ReloadCoroutine());
     }
 }

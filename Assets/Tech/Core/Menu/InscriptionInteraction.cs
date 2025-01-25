@@ -10,6 +10,11 @@ public class InscriptionInteraction : MonoBehaviour
         textBar.text = textInscription + type.ToString();
         textBar.gameObject.SetActive(true);
     }
+    public void Show(string text)
+    {
+        textBar.text = text;
+        textBar.gameObject.SetActive(true);
+    }
     public void Clear()
     {
         textBar.text = null;

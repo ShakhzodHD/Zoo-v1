@@ -47,19 +47,6 @@ public class DebugPanel : MonoBehaviour
             IsMobile = false;
         }
     }
-    private void Update()
-    {
-        if (playerController != null)
-        {
-            speedText.text = "Current speed: " + playerController._speed;
-            ammoText.text = "Curren ammo: " + weaponController.currentAmmo;
-
-            if (weaponController.isReloading) statusAmmoText.text = "Reload...";
-            else statusAmmoText.text = "Console";
-
-            staminaBar.value = playerController.stamina / 100;
-        }
-    }
     public void Init()
     {
         playerController = FindObjectOfType<PlayerController>();
