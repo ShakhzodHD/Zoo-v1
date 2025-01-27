@@ -82,6 +82,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5540425349236584460, guid: be537954dc68bc842b4a33c2988688e4, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5540425349236584460, guid: be537954dc68bc842b4a33c2988688e4, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
       objectReference: {fileID: 342967304539084505}

@@ -41,6 +41,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1854685845946803254}
     m_Modifications:
+    - target: {fileID: 3399172802725577575, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3745176243525884272, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.32376862
@@ -86,6 +90,18 @@ PrefabInstance:
       value: Elephant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+      propertyPath: attackHand
+      value: 
+      objectReference: {fileID: 383201036646147765}
+    - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+      propertyPath: handRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1528856287159994007}
@@ -101,11 +117,17 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[3]
       value: 
       objectReference: {fileID: 7184374532484927067}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5403585678363792576, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+--- !u!4 &383201036646147765 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 338535914427347075, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+  m_PrefabInstance: {fileID: 136198493264778806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3610292874394603334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3745176243525884272, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}

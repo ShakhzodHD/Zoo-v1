@@ -14,7 +14,10 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float attackRadius = 2f;
     [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private Transform attackHand;
+    [SerializeField] private float handRadius = 1f;
     [SerializeField] private int damage = 10;
+    [SerializeField] private LayerMask playerLayer;
 
     [Header("Return Settings")]
     [SerializeField] private float returnRadius = 12f;
@@ -99,7 +102,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void CheckPlayerDetection()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        float distanceToPlayer = GetDistanceToPlayer();
 
         if (distanceToPlayer <= attackRadius)
         {
@@ -130,7 +133,7 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 targetPosition = new(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(targetPosition);
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        float distanceToPlayer = GetDistanceToPlayer();
         if (distanceToPlayer > attackRadius)
         {
             currentState = EnemyState.Chasing;
@@ -144,11 +147,26 @@ public class EnemyBehaviour : MonoBehaviour
                 isAttacking = true;
 
                 OnChangeState?.Invoke(EnemyState.Attacking);
-                Debug.Log("Attack");
 
                 lastAttackTime = Time.time;
 
                 Invoke(nameof(FinishAttack), attackCooldown);
+            }
+        }
+    }
+
+    public void DealDamage()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(attackHand.position, handRadius, playerLayer);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Player"))
+            {
+                if (hitCollider.TryGetComponent<PlayerHealth>(out var playerHealth))
+                {
+                    playerHealth.TakeDamage(damage);
+                }
+                return;
             }
         }
     }
@@ -162,9 +180,25 @@ public class EnemyBehaviour : MonoBehaviour
             currentState = EnemyState.Chasing;
         }
     }
+    private float GetDistanceToPlayer() => Vector3.Distance(transform.position, player.position);
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
+        Gizmos.color = Color.green;
+        if (attackHand != null)
+        {
+            Gizmos.DrawWireSphere(attackHand.position, handRadius);
+        }
+
+        Gizmos.color = currentState switch
+        {
+            EnemyState.Patrolling => Color.green,
+            EnemyState.Chasing => Color.yellow,
+            EnemyState.Attacking => Color.red,
+            _ => Color.white
+        };
+        Gizmos.DrawSphere(transform.position, 0.5f);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
         Gizmos.color = Color.red;

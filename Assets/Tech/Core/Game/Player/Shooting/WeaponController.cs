@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class WeaponController : MonoBehaviour
 {
@@ -24,7 +22,7 @@ public class WeaponController : MonoBehaviour
 
     public Weapon useWeapon;
 
-    public event Action<Sprite> onChangeWeapon;
+    public event Action<Sprite> OnChangeWeapon;
 
     private void Start()
     {
@@ -107,7 +105,7 @@ public class WeaponController : MonoBehaviour
 
         isEquipWeapon = true;
 
-        onChangeWeapon?.Invoke(weapon.logo);
+        OnChangeWeapon?.Invoke(weapon.logo);
 
         Bootstrap.Instance.UIManager.weaponHUD.SetState(weapon);
     }

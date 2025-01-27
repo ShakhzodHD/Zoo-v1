@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: monk_walk
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 99858065082462477}
@@ -164,7 +164,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mont_run
-  m_Speed: 2
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5810998337010748066}

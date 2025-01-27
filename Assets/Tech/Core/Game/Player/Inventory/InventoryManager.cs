@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             inventorySlots[i].sprite = null;
+            inventorySlots[i].enabled = false;
             items.Add(null);
         }
 
@@ -43,6 +44,9 @@ public class InventoryManager : MonoBehaviour
         {
             items[slotIndex] = item;
             inventorySlots[slotIndex].sprite = item.icon;
+            inventorySlots[slotIndex].enabled = true;
+
+
             handHolderController.handSlots[slotIndex].SetObject(item);
             handHolderController.SwitchHand(slotIndex);
             activeSlotIndex = slotIndex;

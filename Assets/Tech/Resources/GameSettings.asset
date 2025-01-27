@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 2963820555386609054, guid: a56d1d5dfcf027744b1b4eacd17ddd92, type: 3}
   WeaponsPrefabs: []
   PistolShootSound: {fileID: 0}
-  defaultCross: {fileID: 21300000, guid: 20c24f11b8cce384ea456fa0381674e1, type: 3}
+  defaultCross: {fileID: 21300000, guid: c4af4a8e896bffd48b62fdd81f338ee9, type: 3}
   interactableCrossPC: {fileID: 21300000, guid: db83735220e2ace458698a9955e18194, type: 3}
   interactableCrossMobile: {fileID: 21300000, guid: 19189a09d3997104abd49de843c9311b, type: 3}
-  universalInteractableCross: {fileID: 21300000, guid: 19189a09d3997104abd49de843c9311b, type: 3}
+  universalInteractableCross: {fileID: 21300000, guid: db83735220e2ace458698a9955e18194, type: 3}
