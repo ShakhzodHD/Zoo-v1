@@ -205,5 +205,35 @@ public class EnemyBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRadius);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, returnRadius);
+
+        Gizmos.color = Color.black;
+        const float lineThickness = 0.1f;
+
+        for (int i = 0; i < patrolPoints.Length - 1; i++)
+        {
+            if (patrolPoints[i] != null && patrolPoints[i + 1] != null)
+            {
+                Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[i + 1].position);
+
+                Vector3 offset = Vector3.up * lineThickness;
+                Gizmos.DrawLine(patrolPoints[i].position + offset, patrolPoints[i + 1].position + offset);
+                Gizmos.DrawLine(patrolPoints[i].position - offset, patrolPoints[i + 1].position - offset);
+
+                Gizmos.DrawSphere(patrolPoints[i].position, 0.5f);
+                Gizmos.DrawSphere(patrolPoints[i + 1].position, 0.5f);
+            }
+        }
+
+        if (patrolPoints[0] != null && patrolPoints[patrolPoints.Length - 1] != null)
+        {
+            Gizmos.DrawLine(patrolPoints[patrolPoints.Length - 1].position, patrolPoints[0].position);
+
+            Vector3 offset = Vector3.up * lineThickness;
+            Gizmos.DrawLine(patrolPoints[patrolPoints.Length - 1].position + offset, patrolPoints[0].position + offset);
+            Gizmos.DrawLine(patrolPoints[patrolPoints.Length - 1].position - offset, patrolPoints[0].position - offset);
+
+            Gizmos.DrawSphere(patrolPoints[patrolPoints.Length - 1].position, 0.5f);
+            Gizmos.DrawSphere(patrolPoints[0].position, 0.5f);
+        }
     }
 }

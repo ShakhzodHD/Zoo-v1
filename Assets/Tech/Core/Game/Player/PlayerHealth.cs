@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (amount <= 0) return;
+
         currentHealth -= amount;
         Debug.Log($"Player health: {currentHealth}");
 
@@ -23,7 +25,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died");
-        // Логика смерти игрока
+        Bootstrap.Instance.ChangeGameState(GameStates.GameOver);
     }
 }

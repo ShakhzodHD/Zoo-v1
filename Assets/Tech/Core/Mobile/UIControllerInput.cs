@@ -18,13 +18,22 @@ public class UIControllerInput : MonoBehaviour
         playerInputSystem.JumpInput(virtualJumpState);
     }
 
+    public void VirtualInteractInput(bool virtualInteractState)
+    {
+        playerInputSystem.InteractInput(virtualInteractState);
+    }
+
     public void VirtualSprintInput(bool virtualSprintState)
     {
         playerInputSystem.SprintInput(virtualSprintState);
     }
 
-    public void VirtualInteractInput(bool virtualInteractSrate)
+    public void VirtualReloadInput(bool virtualReloadSrate)
     {
-        playerInputSystem.InteractInput(virtualInteractSrate);
+        playerInputSystem.ReloadInput(virtualReloadSrate);
+    }
+    public void VirtualWeaponSwitchInput(bool virtualSwitchSrate)
+    {
+        
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
                 break;
             case GameStates.GameOver:
                 ChangeMenuState(MenuStates.GameOver);
+                Invoke(nameof(Restart), 2f);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(gameStates), gameStates, null);
@@ -47,5 +49,11 @@ public class UIManager : MonoBehaviour
     {
         panels.FirstOrDefault(panel => panel.activeSelf)?.SetActive(false);
         panels[(int)_menuStates].SetActive(true);
+    }
+    private void Restart()
+    {
+        Bootstrap.Instance.UIManager.ChangeMenuState(MenuStates.Gameplay);
+        Bootstrap.Instance.ChangeGameState(GameStates.InProgress);
+        Bootstrap.Instance.ScenesService.LoadLevel(SceneManager.GetActiveScene().name);
     }
 }
