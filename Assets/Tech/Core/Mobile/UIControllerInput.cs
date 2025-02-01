@@ -32,8 +32,8 @@ public class UIControllerInput : MonoBehaviour
     {
         playerInputSystem.ReloadInput(virtualReloadSrate);
     }
-    public void VirtualWeaponSwitchInput(bool virtualSwitchSrate)
+    public void VirtualWeaponSwitchInput()
     {
-        
+        playerInputSystem.SwitchWeapon();
     }
 }

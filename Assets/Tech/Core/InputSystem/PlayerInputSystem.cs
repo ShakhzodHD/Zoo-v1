@@ -79,7 +79,10 @@ public class PlayerInputSystem : MonoBehaviour
     {
         interact = newInteractState;
     }
-
+    public void SwitchWeapon()
+    {
+        Bootstrap.Instance.InventoryManager.SwitchActiveSlot(1);
+    }
     private void OnApplicationFocus(bool hasFocus)
     {
         SetCursorState(cursorLocked);

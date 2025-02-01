@@ -631,8 +631,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2059573917698104379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9, y: 0.08888503}
-  m_AnchorMax: {x: 0.95300007, y: 0.18200001}
+  m_AnchorMin: {x: 0.9, y: 0.06}
+  m_AnchorMax: {x: 0.98, y: 0.2}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -846922810, guid: 86c5bc0fd6391344f9749b18bd05baa7, type: 3}
+  m_Sprite: {fileID: -74644958, guid: 86c5bc0fd6391344f9749b18bd05baa7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -735,7 +735,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6122906869701709622}
         m_TargetAssemblyTypeName: UIControllerInput, Assembly-CSharp
-        m_MethodName: VirtualJumpInput
+        m_MethodName: VirtualReloadInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1159,7 +1159,6 @@ GameObject:
   - component: {fileID: 5636935186049888302}
   - component: {fileID: 1252364117768862084}
   - component: {fileID: 4394545771806683561}
-  - component: {fileID: 438298233475776116}
   m_Layer: 9
   m_Name: ButtonSwitch
   m_TagString: Untagged
@@ -1181,8 +1180,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2059573917698104379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.72647923, y: 0.08888503}
-  m_AnchorMax: {x: 0.77900004, y: 0.18200001}
+  m_AnchorMin: {x: 0.72, y: 0.06}
+  m_AnchorMax: {x: 0.8, y: 0.2}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1267,26 +1266,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1252364117768862084}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &438298233475776116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9207967836794747612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da1dce7bba693644becce9dc4ab02a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonStateOutputEvent:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6122906869701709622}
         m_TargetAssemblyTypeName: UIControllerInput, Assembly-CSharp
-        m_MethodName: VirtualJumpInput
-        m_Mode: 0
+        m_MethodName: VirtualWeaponSwitchInput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1295,6 +1279,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  buttonClickOutputEvent:
-    m_PersistentCalls:
-      m_Calls: []

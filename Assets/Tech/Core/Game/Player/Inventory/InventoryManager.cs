@@ -71,6 +71,7 @@ public class InventoryManager : MonoBehaviour
         if (newIndex >= 0 && newIndex < items.Count)
         {
             activeSlotIndex = newIndex;
+            handHolderController.SwitchHand(activeSlotIndex);
             UpdateActiveSlotIndicator();
         }
     }

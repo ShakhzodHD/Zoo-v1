@@ -5,12 +5,12 @@ public class MobileDisableAutoSwitchControls : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput; //стоит рефактировать для webgl
 
-    void Start()
+    private void Start()
     {
         DisableAutoSwitchControls();
     }
 
-    void DisableAutoSwitchControls()
+    private void DisableAutoSwitchControls()
     {
         playerInput.neverAutoSwitchControlSchemes = true;
     }
