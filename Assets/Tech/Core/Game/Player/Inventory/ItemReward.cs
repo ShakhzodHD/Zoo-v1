@@ -26,6 +26,7 @@ public class ItemReward : MonoBehaviour
 
         if (rewards == Rewards.AddMagazine)
         {
+            Bootstrap.Instance.QuestSystem.CompleteQuest("Найти оружие");
             controller.AddAmmo(amount);
         }
     }

@@ -14,6 +14,7 @@ public class Bootstrap : MonoBehaviour
     public PlayerInput PlayerInput { get; set; }
     public InventoryManager InventoryManager { get; private set; }
     public InscriptionInteraction InscriptionInteraction { get; set; }
+    public QuestSystem QuestSystem { get; set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,6 +40,7 @@ public class Bootstrap : MonoBehaviour
         UIManager = FindObjectOfType<UIManager>();
         InventoryManager = FindObjectOfType<InventoryManager>();
         InscriptionInteraction = FindObjectOfType<InscriptionInteraction>();
+        QuestSystem = FindObjectOfType<QuestSystem>();
     }
     private void OnLevelLoaded()
     {

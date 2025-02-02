@@ -99,6 +99,8 @@ public class ItemInteraction : MonoBehaviour
                         else
                         {
                             Bootstrap.Instance.InscriptionInteraction.Show(InscriptionType.Key);
+
+                            Bootstrap.Instance.QuestSystem.AddQuest("Найти ключ");
                         }
                     }
                     else

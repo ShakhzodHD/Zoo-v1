@@ -90,6 +90,10 @@ PrefabInstance:
       value: Elephant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
+      propertyPath: damage
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920805305711092972, guid: d5707f95f02c2344db9e2f216d72f719, type: 3}
       propertyPath: attackHand
       value: 
       objectReference: {fileID: 383201036646147765}

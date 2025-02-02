@@ -53,4 +53,17 @@ public class DebugPanel : MonoBehaviour
         weaponController = FindObjectOfType<WeaponController>();
         playerInputSystem = FindObjectOfType<PlayerInputSystem>();
     }
+
+    private void Update() //temp
+    {
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            Bootstrap.Instance.QuestSystem.CompleteQuest("Выбраться из зоопарка");
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            Bootstrap.Instance.QuestSystem.CompleteQuest("Найти ключ");
+        }
+    }
 }
